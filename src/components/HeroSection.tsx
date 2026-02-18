@@ -13,8 +13,8 @@ const HeroSection = () => {
           Hello, I'm
         </p>
         <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in-up" style={{ animationDelay: "0.2s", opacity: 0 }}>
-          <span className="text-foreground">John </span>
-          <span className="text-gradient">Doe</span>
+          <span className="text-foreground">Akash </span>
+          <span className="text-gradient">Vaddapelli</span>
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground mb-4 font-display animate-fade-in-up" style={{ animationDelay: "0.4s", opacity: 0 }}>
           Full Stack Developer | React | Node.js | PostgreSQL
