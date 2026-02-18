@@ -38,20 +38,23 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-4">
-          My <span className="text-gradient">Projects</span>
-        </h2>
-        <div className="w-16 h-1 bg-primary mx-auto mb-12 rounded-full" />
+        <div className="flex items-center gap-3 justify-center mb-12">
+          <div className="h-px w-12 bg-primary" />
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+            My Projects
+          </h2>
+          <div className="h-px w-12 bg-primary" />
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {projects.map((project) => (
             <div
               key={project.title}
-              className="group bg-card border border-border rounded-xl overflow-hidden transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-card-hover)]"
+              className="group border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 bg-background"
             >
-              <div className="h-2 bg-primary/80 group-hover:bg-primary transition-colors" />
+              <div className="h-1 bg-foreground group-hover:bg-primary transition-colors duration-300" />
               <div className="p-6 space-y-4">
                 <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                   {project.title}
@@ -73,15 +76,15 @@ const ProjectsSection = () => {
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
+                      className="text-xs font-medium px-3 py-1 rounded-full bg-foreground text-background"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-3 pt-4">
-                  <Button variant="hero" size="sm" asChild>
+                <div className="pt-4">
+                  <Button size="sm" className="bg-foreground text-background hover:bg-primary hover:text-primary-foreground transition-colors" asChild>
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                       <Github size={16} /> GitHub
                     </a>
