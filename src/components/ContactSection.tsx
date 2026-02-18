@@ -35,30 +35,26 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-4">
-          Get In <span className="text-gradient">Touch</span>
-        </h2>
-        <div className="w-16 h-1 bg-primary mx-auto mb-12 rounded-full" />
+        <div className="flex items-center gap-3 justify-center mb-12">
+          <div className="h-px w-12 bg-primary" />
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+            Get In Touch
+          </h2>
+          <div className="h-px w-12 bg-primary" />
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Info */}
           <div className="space-y-8">
             <p className="text-muted-foreground leading-relaxed">
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
             </p>
             <div className="space-y-4">
               {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <s.icon className="text-primary" size={20} />
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <s.icon className="text-background" size={20} />
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">{s.label}</p>
@@ -69,38 +65,20 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <Input
-                placeholder="Your Name"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="bg-secondary border-border focus:border-primary"
-              />
+              <Input placeholder="Your Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="border-border bg-background focus:border-primary" />
               {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
             </div>
             <div>
-              <Input
-                type="email"
-                placeholder="Your Email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="bg-secondary border-border focus:border-primary"
-              />
+              <Input type="email" placeholder="Your Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="border-border bg-background focus:border-primary" />
               {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
             </div>
             <div>
-              <Textarea
-                placeholder="Your Message"
-                rows={5}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="bg-secondary border-border focus:border-primary resize-none"
-              />
+              <Textarea placeholder="Your Message" rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="border-border bg-background focus:border-primary resize-none" />
               {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
             </div>
-            <Button variant="hero" size="lg" type="submit" className="w-full">
+            <Button size="lg" type="submit" className="w-full bg-foreground text-background hover:bg-primary hover:text-primary-foreground transition-colors">
               <Send size={18} /> Send Message
             </Button>
           </form>
