@@ -9,38 +9,36 @@ const highlights = [
 const AboutSection = () => {
   return (
     <section id="about" className="py-24 bg-background relative overflow-hidden">
-      {/* Decorative background */}
+      <div className="absolute inset-0 bg-[linear-gradient(hsl(120_100%_50%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(120_100%_50%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
       <div className="absolute top-20 left-0 w-72 h-72 rounded-full bg-primary/5 blur-[100px]" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 rounded-full bg-primary/3 blur-[120px]" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex items-center gap-3 justify-center mb-16">
           <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary" />
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
               <User className="text-primary" size={16} />
             </div>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-              About Me
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-wider">
+              ABOUT ME
             </h2>
           </div>
           <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary" />
         </div>
 
         <div className="max-w-5xl mx-auto">
-          {/* Main content card */}
           <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative bg-background border border-border rounded-2xl p-8 md:p-12 shadow-lg hover:shadow-xl transition-all duration-500 hover:border-primary/30">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative bg-card border border-border rounded-2xl p-8 md:p-12 hover:border-primary/30 transition-all duration-500 border-glow">
               <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
-                <p className="first-letter:text-5xl first-letter:font-display first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:leading-none">
+                <p className="first-letter:text-5xl first-letter:font-display first-letter:font-black first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:leading-none">
                   I'm a passionate Full Stack Developer with a strong focus on building
                   scalable, high-performance web applications. I specialize in the modern
                   JavaScript ecosystem — from crafting pixel-perfect UIs with{" "}
-                  <span className="text-foreground font-semibold bg-primary/5 px-1.5 py-0.5 rounded">React</span> to architecting
+                  <span className="text-primary font-semibold px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20">React</span> to architecting
                   robust backends with{" "}
-                  <span className="text-foreground font-semibold bg-primary/5 px-1.5 py-0.5 rounded">Node.js</span> and{" "}
-                  <span className="text-foreground font-semibold bg-primary/5 px-1.5 py-0.5 rounded">PostgreSQL</span>.
+                  <span className="text-primary font-semibold px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20">Node.js</span> and{" "}
+                  <span className="text-primary font-semibold px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20">PostgreSQL</span>.
                 </p>
                 <p>
                   I thrive on solving complex problems and transforming ideas into elegant,
@@ -56,18 +54,16 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Highlight cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
             {highlights.map((item, i) => (
               <div
                 key={item.label}
-                className="group/card relative bg-background border border-border rounded-xl p-6 shadow-md hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 hover:border-primary/40 transition-all duration-300 cursor-default"
-                style={{ animationDelay: `${i * 0.1}s` }}
+                className="group/card relative bg-card border border-border rounded-xl p-6 hover:border-primary/40 hover:-translate-y-1 hover:glow-green transition-all duration-300 cursor-default"
               >
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover/card:bg-primary group-hover/card:shadow-lg group-hover/card:shadow-primary/25 transition-all duration-300">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-3 group-hover/card:bg-primary group-hover/card:glow-green-strong transition-all duration-300">
                   <item.icon className="text-primary group-hover/card:text-primary-foreground transition-colors duration-300" size={20} />
                 </div>
-                <h3 className="font-display text-base font-semibold text-foreground mb-1">
+                <h3 className="font-display text-sm font-bold text-foreground mb-1 tracking-wider">
                   {item.label}
                 </h3>
                 <p className="text-muted-foreground text-sm">{item.desc}</p>
