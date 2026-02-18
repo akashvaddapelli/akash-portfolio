@@ -12,64 +12,119 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Detect active section
+      const sections = navLinks.map((l) => l.href.replace("#", ""));
+      for (const id of sections.reverse()) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 120) {
+          setActiveSection(id);
+          break;
+        }
+      }
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-primary/5 border-b border-border/50"
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="font-display text-2xl font-bold">
-          <span className="text-foreground">A</span>
-          <span className="text-primary">.</span>
+      <div className="container mx-auto px-6 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#" className="group relative flex items-center gap-1">
+          <span className="font-display text-2xl font-bold text-foreground tracking-tight">
+            Akash
+          </span>
+          <span className="font-display text-2xl font-bold text-primary">.</span>
+          <div className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
         </a>
 
-        {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center">
+          <div className="flex items-center gap-1 bg-muted/50 rounded-full px-2 py-1.5 border border-border/50 shadow-sm">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace("#", "");
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                    isActive
+                      ? "bg-primary text-primary-foreground shadow-md shadow-primary/25"
+                      : "text-muted-foreground hover:text-foreground hover:bg-background"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Hire Me button (desktop) */}
+        <a
+          href="#contact"
+          className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-foreground/75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-foreground" />
+          </span>
+          Hire Me
+        </a>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground p-2 rounded-lg hover:bg-muted transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-background border-t border-border animate-fade-in">
-          <ul className="flex flex-col items-center gap-6 py-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-lg font-medium text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border animate-fade-in">
+          <ul className="flex flex-col items-center gap-2 py-6 px-6">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace("#", "");
+              return (
+                <li key={link.href} className="w-full">
+                  <a
+                    href={link.href}
+                    className={`block w-full text-center py-3 rounded-xl text-base font-medium transition-all ${
+                      isActive
+                        ? "bg-primary text-primary-foreground shadow-md"
+                        : "text-foreground hover:bg-muted"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
+            <li className="w-full pt-2">
+              <a
+                href="#contact"
+                className="block w-full text-center py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/25"
+                onClick={() => setIsOpen(false)}
+              >
+                Hire Me
+              </a>
+            </li>
           </ul>
         </div>
       )}
