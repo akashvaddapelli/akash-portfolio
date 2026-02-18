@@ -36,7 +36,7 @@ const Navbar = () => {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-sm font-bold text-muted-foreground hover:text-foreground transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.label}
               </a>
@@ -62,7 +62,7 @@ const Navbar = () => {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors"
+                  className="text-lg font-bold text-muted-foreground hover:text-primary transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
