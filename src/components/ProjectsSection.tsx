@@ -8,7 +8,7 @@ const projects = [
       "A comprehensive admin dashboard for managing bus routes, schedules, and real-time updates. Features an intuitive interface for route planning, driver assignment, and schedule optimization.",
     features: ["Admin Dashboard", "Route Management", "Real-time Schedule Updates"],
     tech: ["React", "Node.js", "PostgreSQL"],
-    github: "#",
+    github: "https://github.com/akashvaddapelli/smart-bus-project",
   },
   {
     title: "Volume Control Using Hand Gesture",
@@ -32,7 +32,7 @@ const projects = [
       "An intelligent resume analyzer that parses resumes against job descriptions to provide ATS compatibility scores, keyword matching, and optimization suggestions.",
     features: ["Resume Parsing", "ATS Score Analysis", "Keyword Optimization"],
     tech: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "JWT", "Multer", "pdf-parse"],
-    github: "#",
+    github: "https://github.com/akashvaddapelli/ats-guide-bot",
   },
 ];
 
