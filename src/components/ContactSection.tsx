@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Linkedin, Github, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sending, setSending] = useState(false);
 
   const validate = () => {
     const errs: Record<string, string> = {};
@@ -20,12 +22,23 @@ const ContactSection = () => {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    toast({ title: "Message sent!", description: "Thank you for reaching out. I'll get back to you soon." });
-    setForm({ name: "", email: "", message: "" });
-    setErrors({});
+    setSending(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: form,
+      });
+      if (error) throw error;
+      toast({ title: "Message sent!", description: "Thank you for reaching out. I'll get back to you soon." });
+      setForm({ name: "", email: "", message: "" });
+      setErrors({});
+    } catch (err: any) {
+      toast({ title: "Failed to send", description: err.message || "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setSending(false);
+    }
   };
 
   const socials = [
@@ -78,8 +91,8 @@ const ContactSection = () => {
               <Textarea placeholder="Your Message" rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="border-border bg-background focus:border-primary resize-none" />
               {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
             </div>
-            <Button size="lg" type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md transition-colors">
-              <Send size={18} /> Send Message
+            <Button size="lg" type="submit" disabled={sending} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md transition-colors">
+              {sending ? <><Loader2 size={18} className="animate-spin" /> Sending...</> : <><Send size={18} /> Send Message</>}
             </Button>
           </form>
         </div>
