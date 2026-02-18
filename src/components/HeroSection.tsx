@@ -17,7 +17,7 @@ const HeroSection = () => {
           <span className="text-gradient">Vaddapelli</span>
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground mb-4 font-display animate-fade-in-up" style={{ animationDelay: "0.4s", opacity: 0 }}>
-          Full Stack Developer | React | Node.js | PostgreSQL
+          Full Stack Developer
         </p>
         <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed mb-10 animate-fade-in-up" style={{ animationDelay: "0.6s", opacity: 0 }}>
           I build scalable, performant web applications with clean code and modern technologies.
@@ -31,7 +31,7 @@ const HeroSection = () => {
             </a>
           </Button>
           <Button variant="hero-outline" size="lg" asChild>
-            <a href="/resume.pdf" download>
+            <a href="/Akash-vaddapelli-resume.pdf" download="Akash-Vaddapelli-Resume.pdf">
               Download Resume <Download className="ml-1" size={18} />
             </a>
           </Button>

@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from "lucide-react";
+import { Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const projects = [
@@ -9,7 +9,6 @@ const projects = [
     features: ["Admin Dashboard", "Route Management", "Real-time Schedule Updates"],
     tech: ["React", "Node.js", "PostgreSQL"],
     github: "#",
-    demo: "#",
   },
   {
     title: "Volume Control Using Hand Gesture",
@@ -18,7 +17,6 @@ const projects = [
     features: ["Hand Detection", "Real-time Volume Control", "Webcam Integration"],
     tech: ["Python", "OpenCV", "MediaPipe"],
     github: "#",
-    demo: null,
   },
   {
     title: "Task Management System",
@@ -27,16 +25,14 @@ const projects = [
     features: ["User Authentication", "Task CRUD Operations", "Real-time Status Tracking"],
     tech: ["React", "Node.js", "Express.js", "PostgreSQL"],
     github: "#",
-    demo: "#",
   },
   {
     title: "ATSPro Analyzer",
     description:
       "An intelligent resume analyzer that parses resumes against job descriptions to provide ATS compatibility scores, keyword matching, and optimization suggestions.",
     features: ["Resume Parsing", "ATS Score Analysis", "Keyword Optimization"],
-    tech: ["Python", "React", "Node.js"],
+    tech: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "JWT", "Multer", "pdf-parse"],
     github: "#",
-    demo: null,
   },
 ];
 
@@ -90,13 +86,6 @@ const ProjectsSection = () => {
                       <Github size={16} /> GitHub
                     </a>
                   </Button>
-                  {project.demo && (
-                    <Button variant="hero-outline" size="sm" asChild>
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink size={16} /> Live Demo
-                      </a>
-                    </Button>
-                  )}
                 </div>
               </div>
             </div>
