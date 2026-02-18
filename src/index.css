@@ -7,43 +7,43 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 0 0% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 0 0% 7%;
 
-    --primary: 25 100% 50%;
+    --primary: 217 91% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 97%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 0 0% 7%;
 
-    --muted: 0 0% 95%;
+    --muted: 210 15% 95%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 25 100% 50%;
+    --accent: 217 91% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 25 100% 50%;
+    --border: 210 15% 90%;
+    --input: 210 15% 90%;
+    --ring: 217 91% 50%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 25 100% 50%;
+    --sidebar-foreground: 0 0% 7%;
+    --sidebar-primary: 217 91% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 95%;
-    --sidebar-accent-foreground: 0 0% 0%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 25 100% 50%;
+    --sidebar-accent: 210 15% 95%;
+    --sidebar-accent-foreground: 0 0% 7%;
+    --sidebar-border: 210 15% 90%;
+    --sidebar-ring: 217 91% 50%;
 
     /* Custom tokens */
     --font-display: 'Space Grotesk', sans-serif;
@@ -73,6 +73,6 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(25 100% 50%), hsl(15 90% 45%));
+    background-image: linear-gradient(135deg, hsl(217 91% 50%), hsl(230 80% 45%));
   }
 }

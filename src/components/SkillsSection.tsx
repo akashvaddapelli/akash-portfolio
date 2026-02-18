@@ -9,11 +9,11 @@ const skillCategories = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 bg-foreground">
+    <section id="skills" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="flex items-center gap-3 justify-center mb-12">
           <div className="h-px w-12 bg-primary" />
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-background">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
             My Skills
           </h2>
           <div className="h-px w-12 bg-primary" />
@@ -23,17 +23,17 @@ const SkillsSection = () => {
           {skillCategories.map((cat) => (
             <div
               key={cat.title}
-              className="group border border-background/10 rounded-lg p-6 transition-all duration-300 hover:border-primary/50 hover:bg-background/5"
+              className="group bg-background border border-border rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:border-primary/50"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 <cat.icon className="text-primary" size={24} />
               </div>
-              <h3 className="font-display text-lg font-semibold mb-3 text-background">
+              <h3 className="font-display text-lg font-semibold mb-3 text-foreground">
                 {cat.title}
               </h3>
               <ul className="space-y-2">
                 {cat.skills.map((skill) => (
-                  <li key={skill} className="text-background/60 text-sm flex items-center gap-2">
+                  <li key={skill} className="text-muted-foreground text-sm flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                     {skill}
                   </li>

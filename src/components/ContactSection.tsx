@@ -53,8 +53,8 @@ const ContactSection = () => {
             <div className="space-y-4">
               {socials.map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center group-hover:bg-primary transition-colors">
-                    <s.icon className="text-background" size={20} />
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <s.icon className="text-primary group-hover:text-primary-foreground" size={20} />
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">{s.label}</p>
@@ -78,7 +78,7 @@ const ContactSection = () => {
               <Textarea placeholder="Your Message" rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="border-border bg-background focus:border-primary resize-none" />
               {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
             </div>
-            <Button size="lg" type="submit" className="w-full bg-foreground text-background hover:bg-primary hover:text-primary-foreground transition-colors">
+            <Button size="lg" type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md transition-colors">
               <Send size={18} /> Send Message
             </Button>
           </form>

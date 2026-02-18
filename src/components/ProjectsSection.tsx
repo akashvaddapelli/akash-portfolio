@@ -52,9 +52,9 @@ const ProjectsSection = () => {
           {projects.map((project) => (
             <div
               key={project.title}
-              className="group border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 bg-background"
+              className="group border border-border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:border-primary/50 bg-background"
             >
-              <div className="h-1 bg-foreground group-hover:bg-primary transition-colors duration-300" />
+              <div className="h-1 bg-primary/30 group-hover:bg-primary transition-colors duration-300" />
               <div className="p-6 space-y-4">
                 <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                   {project.title}
@@ -76,7 +76,7 @@ const ProjectsSection = () => {
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="text-xs font-medium px-3 py-1 rounded-full bg-foreground text-background"
+                      className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary"
                     >
                       {t}
                     </span>
@@ -84,7 +84,7 @@ const ProjectsSection = () => {
                 </div>
 
                 <div className="pt-4">
-                  <Button size="sm" className="bg-foreground text-background hover:bg-primary hover:text-primary-foreground transition-colors" asChild>
+                  <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm transition-colors" asChild>
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                       <Github size={16} /> GitHub
                     </a>
