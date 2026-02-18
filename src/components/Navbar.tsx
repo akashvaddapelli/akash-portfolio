@@ -17,8 +17,6 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      // Detect active section
       const sections = navLinks.map((l) => l.href.replace("#", ""));
       for (const id of sections.reverse()) {
         const el = document.getElementById(id);
@@ -36,57 +34,53 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-primary/5 border-b border-border/50"
+          ? "bg-background/90 backdrop-blur-xl border-b border-primary/10 glow-green"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Logo */}
         <a href="#" className="group relative flex items-center gap-1">
-          <span className="font-display text-2xl font-bold text-foreground tracking-tight">
-            Akash
+          <span className="font-display text-xl font-black text-foreground tracking-widest">
+            AKASH
           </span>
-          <span className="font-display text-2xl font-bold text-primary">.</span>
-          <div className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+          <span className="font-display text-xl font-black text-primary">.</span>
+          <div className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full glow-green" />
         </a>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center">
-          <div className="flex items-center gap-1 bg-muted/50 rounded-full px-2 py-1.5 border border-border/50 shadow-sm">
+          <div className="flex items-center gap-1 bg-card/80 rounded-full px-2 py-1.5 border border-border/50">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace("#", "");
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`relative px-4 py-1.5 rounded-full text-xs font-display font-bold tracking-wider transition-all duration-300 ${
                     isActive
-                      ? "bg-primary text-primary-foreground shadow-md shadow-primary/25"
-                      : "text-muted-foreground hover:text-foreground hover:bg-background"
+                      ? "bg-primary text-primary-foreground glow-green"
+                      : "text-muted-foreground hover:text-primary hover:bg-primary/10"
                   }`}
                 >
-                  {link.label}
+                  {link.label.toUpperCase()}
                 </a>
               );
             })}
           </div>
         </div>
 
-        {/* Hire Me button (desktop) */}
         <a
           href="#contact"
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300"
+          className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-display font-bold tracking-widest glow-green-strong hover:scale-105 transition-all duration-300"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-foreground/75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-foreground" />
           </span>
-          Hire Me
+          HIRE ME
         </a>
 
-        {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground p-2 rounded-lg hover:bg-muted transition-colors"
+          className="md:hidden text-foreground p-2 rounded-lg hover:bg-primary/10 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -94,9 +88,8 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border animate-fade-in">
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-primary/10 animate-fade-in">
           <ul className="flex flex-col items-center gap-2 py-6 px-6">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace("#", "");
@@ -104,14 +97,14 @@ const Navbar = () => {
                 <li key={link.href} className="w-full">
                   <a
                     href={link.href}
-                    className={`block w-full text-center py-3 rounded-xl text-base font-medium transition-all ${
+                    className={`block w-full text-center py-3 rounded-xl text-sm font-display font-bold tracking-wider transition-all ${
                       isActive
-                        ? "bg-primary text-primary-foreground shadow-md"
-                        : "text-foreground hover:bg-muted"
+                        ? "bg-primary text-primary-foreground glow-green"
+                        : "text-foreground hover:bg-primary/10 hover:text-primary"
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
-                    {link.label}
+                    {link.label.toUpperCase()}
                   </a>
                 </li>
               );
@@ -119,10 +112,10 @@ const Navbar = () => {
             <li className="w-full pt-2">
               <a
                 href="#contact"
-                className="block w-full text-center py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/25"
+                className="block w-full text-center py-3 rounded-xl bg-primary text-primary-foreground font-display font-bold tracking-widest glow-green-strong"
                 onClick={() => setIsOpen(false)}
               >
-                Hire Me
+                HIRE ME
               </a>
             </li>
           </ul>
