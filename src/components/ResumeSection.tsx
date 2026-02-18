@@ -21,7 +21,7 @@ const ResumeSection = () => {
             Get a detailed overview of my experience, skills, and education.
           </p>
           <Button variant="hero" size="lg" asChild>
-            <a href="/resume.pdf" download>
+            <a href="/Akash-vaddapelli-resume.pdf" download="Akash-Vaddapelli-Resume.pdf">
               <Download size={18} /> Download PDF
             </a>
           </Button>
