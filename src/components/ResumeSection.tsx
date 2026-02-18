@@ -2,6 +2,16 @@ import { Download, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const ResumeSection = () => {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/Akash-vaddapelli-resume.pdf";
+    link.download = "Akash-Vaddapelli-Resume.pdf";
+    link.type = "application/pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="resume" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -23,10 +33,8 @@ const ResumeSection = () => {
           <p className="text-muted-foreground mb-6 text-sm">
             Get a detailed overview of my experience, skills, and education.
           </p>
-          <Button variant="hero" size="lg" asChild>
-            <a href="/Akash-vaddapelli-resume.pdf" download="Akash-Vaddapelli-Resume.pdf">
-              <Download size={18} /> Download PDF
-            </a>
+          <Button variant="hero" size="lg" onClick={handleDownload}>
+            <Download size={18} /> Download PDF
           </Button>
         </div>
       </div>
