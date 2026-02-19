@@ -27,6 +27,14 @@ const projects = [
     github: "#",
   },
   {
+    title: "Task Management System",
+    description:
+      "A full-stack task management application with user authentication, CRUD operations, task categorization, and real-time status tracking.",
+    features: ["User Authentication", "Task CRUD Operations", "Real-time Status Tracking"],
+    tech: ["React", "Node.js", "Express.js", "PostgreSQL"],
+    github: "https://github.com/akashvaddapelli/task-master-hub",
+  },
+  {
     title: "ATSPro Analyzer",
     description:
       "An intelligent resume analyzer that parses resumes against job descriptions to provide ATS compatibility scores, keyword matching, and optimization suggestions.",
