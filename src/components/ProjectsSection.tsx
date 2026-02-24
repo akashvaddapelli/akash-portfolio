@@ -34,6 +34,14 @@ const projects = [
     tech: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "JWT", "Multer", "pdf-parse"],
     github: "https://github.com/akashvaddapelli/ats-guide-bot",
   },
+  {
+    title: "ResumeIQ – Mock Interview Platform",
+    description:
+      "A comprehensive mock interview platform where users can practice interviews by uploading their resume and job description. Features include timed tests, daily streak tracking, progress analytics, and downloadable practice history via a personalized dashboard.",
+    features: ["Mock Interview Practice", "Daily Streaks & Progress Tracking", "Downloadable Dashboard Reports"],
+    tech: ["React", "Node.js", "Express.js", "PostgreSQL"],
+    github: "https://github.com/akashvaddapelli/Resumeiq",
+  },
 ];
 
 const ProjectsSection = () => {
