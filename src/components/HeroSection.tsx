@@ -1,27 +1,25 @@
 import { ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import developerProfile from "@/assets/developer-profile.png";
-import { useEffect, useState } from "react";
+import developerProfileVideo from "@/assets/developer-profile-wave.mp4";
+import { useEffect, useRef, useState } from "react";
 
 const HeroSection = () => {
   const [showGreeting, setShowGreeting] = useState(false);
-  const [waving, setWaving] = useState(false);
+  const [videoEnded, setVideoEnded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
-      setWaving(true);
       setShowGreeting(true);
-    }, 1200);
+      videoRef.current?.play().catch(() => {});
+    }, 800);
     const timer2 = setTimeout(() => {
-      setWaving(false);
-    }, 3500);
-    const timer3 = setTimeout(() => {
       setShowGreeting(false);
-    }, 4200);
+    }, 5500);
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
-      clearTimeout(timer3);
     };
   }, []);
 
@@ -84,15 +82,20 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              <div
-                className={`w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/40 glow-green-strong transition-transform duration-700 ease-in-out ${
-                  waving ? "animate-profile-wave" : ""
-                }`}
-              >
+              <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/40 glow-green-strong">
+                {/* Video plays on load, then shows static image */}
+                <video
+                  ref={videoRef}
+                  src={developerProfileVideo}
+                  muted
+                  playsInline
+                  onEnded={() => setVideoEnded(true)}
+                  className={`w-full h-full object-cover ${videoEnded ? "hidden" : "block"}`}
+                />
                 <img
                   src={developerProfile}
                   alt="Akash Vaddapelli - Developer"
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover ${videoEnded ? "block" : "hidden"}`}
                 />
               </div>
               <div className="absolute -inset-4 rounded-full border-2 border-primary/20 animate-[spin_20s_linear_infinite]" />
