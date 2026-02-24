@@ -1,8 +1,30 @@
 import { ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import developerProfile from "@/assets/developer-profile.png";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
+  const [showGreeting, setShowGreeting] = useState(false);
+  const [waving, setWaving] = useState(false);
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setWaving(true);
+      setShowGreeting(true);
+    }, 1200);
+    const timer2 = setTimeout(() => {
+      setWaving(false);
+    }, 3500);
+    const timer3 = setTimeout(() => {
+      setShowGreeting(false);
+    }, 4200);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Omnitrix-style radial glow */}
@@ -48,7 +70,25 @@ const HeroSection = () => {
           {/* Profile with Omnitrix ring */}
           <div className="flex justify-center lg:justify-end animate-fade-in-up" style={{ animationDelay: "0.4s", opacity: 0 }}>
             <div className="relative">
-              <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/40 glow-green-strong">
+              {/* Speech bubble */}
+              <div
+                className={`absolute -top-16 left-1/2 -translate-x-1/2 z-20 transition-all duration-500 ${
+                  showGreeting
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 translate-y-4 scale-75"
+                }`}
+              >
+                <div className="bg-primary text-primary-foreground px-5 py-2 rounded-2xl font-display text-sm font-bold tracking-wider whitespace-nowrap glow-green-strong">
+                  Hi there! 👋
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rotate-45 rounded-sm" />
+                </div>
+              </div>
+
+              <div
+                className={`w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/40 glow-green-strong transition-transform duration-700 ease-in-out ${
+                  waving ? "animate-profile-wave" : ""
+                }`}
+              >
                 <img
                   src={developerProfile}
                   alt="Akash Vaddapelli - Developer"
